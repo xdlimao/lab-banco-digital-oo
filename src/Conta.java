@@ -16,19 +16,23 @@ public abstract class Conta implements IConta {
 	}
 
 	@Override
-	public void sacar(double valor) {
-		saldo -= valor;
+	public void sacar(double valor, String senha) {
+		if (cliente.senha == senha)
+			saldo -= valor;
 	}
 
 	@Override
-	public void depositar(double valor) {
-		saldo += valor;
+	public void depositar(double valor, String senha) {
+		if (cliente.senha == senha)
+			saldo += valor;
 	}
 
 	@Override
-	public void transferir(double valor, IConta contaDestino) {
-		this.sacar(valor);
-		contaDestino.depositar(valor);
+	public void transferir(double valor, IConta contaDestino, String senha) {
+		if (cliente.senha == senha) {
+			this.sacar(valor);
+			contaDestino.depositar(valor);
+		}
 	}
 
 	public int getAgencia() {

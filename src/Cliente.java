@@ -2,6 +2,11 @@
 public class Cliente {
 
 	private String nome;
+	private String senha;
+	public Cliente(){}
+	public Cliente(String senha){
+		this.senha = senha;
+	}
 
 	public String getNome() {
 		return nome;
